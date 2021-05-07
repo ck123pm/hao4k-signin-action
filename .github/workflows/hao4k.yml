@@ -1,6 +1,7 @@
 name: hao4k
 
 on:
+  workflow_dispatch:
   push:
     branches: 
       - main
