@@ -23,9 +23,15 @@ form_data = {
     'answer': ""
 }
 inajax = '&inajax=1'
+send_headers = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36",
+    "Connection": "keep-alive",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
+    "Accept-Language": "zh-CN,zh;q=0.8"}
 
 def run(form_data):
     s = requests.Session()
+    s.headers.update(send_headers)
     user_resp = s.get(user_url)
     login_text = re.findall('action="(.*?)"', user_resp.text)
     for loginhash in login_text:
